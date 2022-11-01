@@ -40,16 +40,18 @@ console.log(bankAccount)
 function handleBalance(){
     const depositAmount = parseInt(document.getElementById("depositAmount").value);
     const withdrawalAmount = parseInt(document.getElementById("withdrawalAmount").value);
-    const currentBalance = parseInt(document.getElementById("initialDeposit").value);
+    const currentBalance1 = parseInt(document.getElementsByTagName("justWork").innerHTML);
     //const currentBalance1 = parseInt(document.getElementById("currentBalance").placeholder);
 
-    let newBalance = currentBalance;
-    let newBalance1 = parseInt(newBalance);
-    console.log(currentBalance);
-    newBalance1 += depositAmount;
-    newBalance1 -= withdrawalAmount;
-    document.getElementById("currentBalance").innertext = toString(newBalance1);
-    console.log(newBalance1);
+    let newBalance = currentBalance1;
+    if(depositAmount > 0 || withdrawalAmount > 0){
+        newBalance += depositAmount;
+        newBalance -= withdrawalAmount;
+        currentBalance.innerHTML = toString(newBalance);
+        console.log(newBalance);
+    } else{
+        justWork.innerHTML = currentBalance1;
+    }
 
 }
 
@@ -62,7 +64,7 @@ function handleNewAccount(event) {
 
     const firstDeposit = document.getElementById("initialDeposit").value;
     let currentBalance = document.getElementById("currentBalance");
-    currentBalance.placeholder = firstDeposit;
+    currentBalance.innerHTML = firstDeposit;
     
 handleBalance();
 }
